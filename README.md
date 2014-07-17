@@ -1,7 +1,9 @@
 PracticalMachineLearning
 ========================
 
-Welcome to Practical Machine Learning! This course will focus on developing the tools and techniques for understanding, building, and testing prediction functions.
+Welcome to Practical Machine Learning! 
+
+This course will focus on developing the tools and techniques for understanding, building, and testing prediction functions.
 
 These tools are at the center of the Data Science revolution. Many researchers, companies, and governmental organizations would like to use the cheap and abundant data they are collecting to predict what customers will like, what services to offer, or how to improve people's lives.
 
