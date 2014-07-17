@@ -1,5 +1,5 @@
-PracticalMachineLearning
-========================
+Practical Machine Learning
+==========================
 
 Welcome to Practical Machine Learning! 
 
