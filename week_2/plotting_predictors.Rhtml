@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<title>Plotting predictors</title>
+</head>
+
+<body>
+
+<h3>Example: Wage data</h3>
+
+<!--begin.rcode
+library(ISLR); library(ggplot2); library(caret);
+data(Wage)
+summary(Wage)
+end.rcode-->
+
+<h3>Get training/test sets</h3>
+
+<!--begin.rcode
+
+inTrain <- createDataPartition(y=Wage$wage, p=0.7, list=FALSE)
+training <- Wage[inTrain,]
+testing <- Wage[-inTrain,]
+
+dim(training); dim(testing)
+end.rcode-->
+
+<h3>Qplot (ggplot2 package)</h3>
+
+<!--begin.rcode
+
+qq <- qplot(age, wage, colour=jobclass, data=training)
+qq + geom_smooth(method='lm', formula=y~x)
+
+qq <- qplot(age, wage, colour=education, data=training)
+qq + geom_smooth(method='lm', formula=y~x)
+end.rcode-->
+
+<h3>cut2, making factors (Hmisc package)</h3>
+
+<!--begin.rcode
+library(Hmisc)
+
+cutWage <- cut2(training$wage, g=3)
+table(cutWage)
+
+end.rcode-->
+
+<h3>Boxplots with points overlayed</h3>
+
+<!--begin.rcode
+
+library(gridExtra)
+
+p1 <- qplot(cutWage, age, data=training, fill=cutWage, geom=c("boxplot"))
+p1
+
+p2 <- qplot(cutWage, age, data=training, fill=cutWage, geom=c("boxplot", "jitter"))
+p2
+
+grid.arrange(p1, p2, ncol=2)
+
+end.rcode-->
+
+<h3>Tables</h3>
+
+<!--begin.rcode
+
+t1 <- table(cutWage, training$jobclass)
+t1
+
+prop.table(t1, 1)
+
+end.rcode-->
+
+<h3>Density plots</h3>
+
+<!--begin.rcode
+
+qplot(wage, colour=education, data=training, geom="density")
+
+end.rcode-->
+
+</body>
+</html>
